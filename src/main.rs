@@ -19,11 +19,13 @@ fn main() {
 
     let input_file_as_path = Path::new(input_file);
     if !input_file_as_path.is_file() {
+        log::log!(Level::Trace, "Input argument should be a file.");
         return;
     }
 
     let output_directory_as_path = Path::new(output_directory);
     if !output_directory_as_path.is_dir() {
+        log::log!(Level::Trace, "Output argument should be a directory.");
         return;
     }
 
