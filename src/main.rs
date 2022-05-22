@@ -38,6 +38,9 @@ fn main() {
             .unwrap()
     );
 
+    #[cfg(target_os = "macos")]
+    env::set_var("GST_PLUGIN_SYSTEM_PATH", "/usr/local/lib/gstreamer-1.0");
+
     let input_file_as_path_as_ref = input_file_as_path.as_ref();
 
     let video_source = FileSource::new(input_file_as_path_as_ref, (1920, 1080)).unwrap();
