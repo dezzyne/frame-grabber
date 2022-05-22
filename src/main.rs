@@ -47,11 +47,14 @@ fn main() {
 
     let video_source = FileSource::new(input_file_as_path_as_ref, (1920, 1080)).unwrap();
 
-    for (n, frame) in video_source.into_iter().enumerate() {
+    let mut number: usize = 0;
+    for frame in video_source.into_iter() {
         if let Ok(Some(png_img_data)) = frame {
             let mut file =
-                File::create(output_directory_as_path.join(format!("image{}.png", n))).unwrap();
+                File::create(output_directory_as_path.join(format!("frame_{}.png", number)))
+                    .unwrap();
             file.write_all(&png_img_data).unwrap();
+            number += 1;
         }
     }
 }
